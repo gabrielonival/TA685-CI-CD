@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Iniciando fase de pre-build...
+      - REPOSITORY_URI=253490770873.dkr.ecr.us-east-2.amazonaws.com/vg-ecr 
+      - echo Logueando en el registro ECR...
+      - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin $REPOSITORY_URI
+      - echo Logueo exitoso.
+  build:
+    commands:
+      - echo Iniciando fase de build...
+      - docker build -t vg-ci/cd-image .
+      - docker tag vg-ci/cd-image:latest $REPOSITORY_URI:latest
+      - echo Buildeo completo!
+  post_build:
+    commands:
+      - echo Iniciando fase de post-build...
+      - echo Empujando la imagen a ECR...
+      - docker push $REPOSITORY_URI:latest
+      - echo Build y push completado.
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes

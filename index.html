@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD TeraTraining</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #291bc2;
+        }
+
+        #secreto {
+            display: none;
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        #boton {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #boton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+     <h1 style="color: aliceblue;">Hola TeraClouders!<br</h1>
+    <div>
+        <button id="boton" onclick="mostrarMensaje()">Mensaje subliminal para LU</button>
+        <div id="secreto" style="color: yellow;">Si lees esto me debes un sticker</div>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById("secreto").style.display = "block";
+        }
+    </script>
+    
+</body>
+</html>
+
